@@ -13,7 +13,7 @@ if ($PSVersionTable.PSVersion.Major -lt 5)
 	Read-Host -Prompt "* Can't do anything! Press Enter to exit"
 	Exit 1
 }
-
+Write-Host ""
 Write-Host "My name is Gregor and i'll help you to get you in good shape"
 
 # find day and time
@@ -51,6 +51,9 @@ $data = Import-Csv -Path $file -Delimiter ';'
 $chosen = $data | Get-Random
 Write-Host "Playing:" $chosen.URL
 Write-Host "Remark:" $chosen.Remark -ForegroundColor Cyan
+
+Start-Sleep 3
+
 if ([INT]$chosen.starttime -gt 1){
     $starttime = [INT]$chosen.starttime
 }
