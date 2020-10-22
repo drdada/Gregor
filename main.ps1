@@ -35,18 +35,17 @@ else{
     Write-Host "Good Morning"
     $cat = "morning"
 }
-Write-Host "Yay ! This will be a(n)"($cat).ToUpper() "training today" -ForegroundColor Green 
+Write-Host "Yay ! This will be a(n)"($cat).ToUpper() "training today" -ForegroundColor Green
 
 
 # download data file or use the local one
 if (!(Test-Path "video-$cat.csv")){
     #download file because we don't find it in local folder
-    #TODO
-    #wget
+    wget https://raw.githubusercontent.com/drdada/Gregor/master/video-$cat.csv -OutFile video-$cat.csv
     Write-Host "Downloading file"
-}else{
-    $file = "video-$cat.csv"
 }
+$file = "video-$cat.csv"
+
 
 $data = Import-Csv -Path $file -Delimiter ';'
 $chosen = $data | Get-Random
@@ -66,7 +65,7 @@ else{
     $stoptime = ""
 }
 
-For ($i=0; $i -lt 5; $i++) {  
+For ($i=0; $i -lt 5; $i++) {
     $p=$i*20
     $s=5-$i
     Write-Progress -Activity "Starting in 5 seconds" -SecondsRemaining $s -PercentComplete $p
@@ -89,12 +88,11 @@ if ($confirmation -eq 'n') {
 # download data file or use the local one
 if (!(Test-Path "video-stretch.csv")){
     #download file because we don't find it in local folder
-    #TODO
-    #wget
+    wget https://raw.githubusercontent.com/drdada/Gregor/master/video-stretch.csv -OutFile video-stretch.csv
     Write-Host "Downloading file"
-}else{
-    $file = "video-stretch.csv"
 }
+$file = "video-stretch.csv"
+
 
 $data = Import-Csv -Path $file -Delimiter ';'
 $chosen = $data | Get-Random
@@ -114,7 +112,7 @@ else{
     $stoptime = ""
 }
 
-For ($i=0; $i -lt 5; $i++) {  
+For ($i=0; $i -lt 5; $i++) {
     $p=$i*20
     $s=5-$i
     Write-Progress -Activity "Starting in 5 seconds" -SecondsRemaining $s -PercentComplete $p
